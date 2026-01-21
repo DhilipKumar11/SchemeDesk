@@ -1,0 +1,39 @@
+{
+    "schemes": {
+        "PM-KISAN": {
+            "income": {
+                "min": 0,
+                "max": 200000,
+                "description": "Annual family income should not exceed ₹2 lakhs"
+            }
+        },
+        "Ayushman_Bharat": {
+            "income": {
+                "min": 0,
+                "max": 500000,
+                "description": "For families with annual income below ₹5 lakhs"
+            }
+        },
+        "Sukanya_Samriddhi": {
+            "income": {
+                "min": 0,
+                "max": 1000000,
+                "description": "No strict income limit, but primarily for middle-income families"
+            }
+        },
+        "PM_Awas_Yojana": {
+            "income": {
+                "min": 0,
+                "max": 1800000,
+                "description": "For EWS/LIG/MIG categories with income up to ₹18 lakhs"
+            }
+        },
+        "PM_Mudra_Yojana": {
+            "income": {
+                "min": 0,
+                "max": 1000000,
+                "description": "For micro-enterprises, income criteria varies by loan category"
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "schemes": {
+        "PM-KISAN": {
+            "states": [
+                "All"
+            ],
+            "description": "Available across all states in India"
+        },
+        "Ayushman_Bharat": {
+            "states": [
+                "All"
+            ],
+            "description": "Pan-India health insurance scheme"
+        },
+        "Sukanya_Samriddhi": {
+            "states": [
+                "All"
+            ],
+            "description": "Available nationwide"
+        },
+        "PM_Awas_Yojana": {
+            "states": [
+                "All"
+            ],
+            "description": "Available in all states with urban/rural variants"
+        },
+        "PM_Mudra_Yojana": {
+            "states": [
+                "All"
+            ],
+            "description": "Available across India"
+        }
+    },
+    "stateSpecificSchemes": {
+        "Maharashtra": [
+            "Mahatma Jyotiba Phule Jan Arogya Yojana",
+            "Rajarshi Shahu Maharaj Shikshan Shulkh Punarpurti Yojana"
+        ],
+        "Karnataka": [
+            "Yashasvini Health Insurance Scheme",
+            "Sandhya Suraksha Yojana"
+        ],
+        "Tamil Nadu": [
+            "Chief Minister's Comprehensive Health Insurance Scheme",
+            "Amma Two Wheeler Scheme"
+        ]
+    }
+}

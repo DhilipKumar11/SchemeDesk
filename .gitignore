@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json
+*/package-lock.json
+
+# Environment variables
+.env
+*.env.local
+*.env.production
+backend/.env
+
+# Build outputs
+dist/
+build/
+*/dist/
+*/build/
+.next/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Uploads and user data
+uploads/
+*/uploads/
+*.pdf
+*.doc
+*.docx
+
+# Database
+*.mongodb
+*.db
+*.sqlite
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.temp/
+.tmp/
+*.pid
+*.seed
+*.pid.lock
+
+# Brain/Artifacts (development artifacts)
+.gemini/
+brain/

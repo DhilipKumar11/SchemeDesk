@@ -1,0 +1,39 @@
+{
+    "schemes": {
+        "PM-KISAN": {
+            "age": {
+                "min": 18,
+                "max": 100,
+                "description": "Must be an adult farmer"
+            }
+        },
+        "Ayushman_Bharat": {
+            "age": {
+                "min": 0,
+                "max": 100,
+                "description": "All age groups covered"
+            }
+        },
+        "Sukanya_Samriddhi": {
+            "age": {
+                "min": 0,
+                "max": 10,
+                "description": "For girl child below 10 years (parent applies)"
+            }
+        },
+        "PM_Awas_Yojana": {
+            "age": {
+                "min": 18,
+                "max": 70,
+                "description": "Adult citizens up to 70 years"
+            }
+        },
+        "PM_Mudra_Yojana": {
+            "age": {
+                "min": 18,
+                "max": 65,
+                "description": "Working age entrepreneurs"
+            }
+        }
+    }
+}

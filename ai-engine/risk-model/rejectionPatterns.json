@@ -1,0 +1,64 @@
+{
+    "commonRejectionReasons": [
+        {
+            "reason": "Incomplete documentation",
+            "weight": 0.35,
+            "indicators": [
+                "Missing required documents",
+                "Less than 80% documents uploaded",
+                "No income proof"
+            ]
+        },
+        {
+            "reason": "Document validation failures",
+            "weight": 0.30,
+            "indicators": [
+                "Name mismatch",
+                "Expired documents",
+                "Invalid format"
+            ]
+        },
+        {
+            "reason": "Eligibility criteria not met",
+            "weight": 0.20,
+            "indicators": [
+                "Income exceeds limit",
+                "Age outside range",
+                "Wrong state/district"
+            ]
+        },
+        {
+            "reason": "Incomplete profile",
+            "weight": 0.10,
+            "indicators": [
+                "Missing mandatory fields",
+                "Unverified contact information"
+            ]
+        },
+        {
+            "reason": "Duplicate application",
+            "weight": 0.05,
+            "indicators": [
+                "Already applied for same scheme",
+                "Existing beneficiary"
+            ]
+        }
+    ],
+    "riskFactors": {
+        "critical": {
+            "threshold": 70,
+            "description": "High probability of rejection",
+            "action": "Review and fix issues before submitting"
+        },
+        "medium": {
+            "threshold": 40,
+            "description": "Moderate risk, improvements recommended",
+            "action": "Address warnings to improve chances"
+        },
+        "low": {
+            "threshold": 0,
+            "description": "Good chance of approval",
+            "action": "Proceed with application"
+        }
+    }
+}
