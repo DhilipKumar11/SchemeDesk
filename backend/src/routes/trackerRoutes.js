@@ -1,21 +1,21 @@
 import express from 'express';
 import {
-    createApplication,
     getUserApplications,
     getApplicationById,
+    createApplication,
     updateApplicationStatus,
-    getApplicationStats,
-    recalculateRisk
+    calculateRiskScore,
+    getApplicationStats
 } from '../controllers/trackerController.js';
-import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/', protect, createApplication);
-router.get('/', protect, getUserApplications);
-router.get('/stats', protect, getApplicationStats);
-router.get('/:id', protect, getApplicationById);
-router.put('/:id/status', protect, updateApplicationStatus);
-router.get('/:id/risk', protect, recalculateRisk);
+// Public routes - no authentication required for demo
+router.get('/stats', getApplicationStats);
+router.get('/', getUserApplications);
+router.post('/', createApplication);
+router.get('/:id', getApplicationById);
+router.patch('/:id/status', updateApplicationStatus);
+router.get('/:id/risk', calculateRiskScore);
 
 export default router;

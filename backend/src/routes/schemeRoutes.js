@@ -1,17 +1,11 @@
 import express from 'express';
-import {
-    getAllSchemes,
-    getEligibleSchemes,
-    getSchemeById,
-    getSchemesByCategory
-} from '../controllers/schemeController.js';
-import { protect } from '../middleware/authMiddleware.js';
+import { getAllSchemes, getSchemeById, getEligibleSchemes } from '../controllers/schemeController.js';
 
 const router = express.Router();
 
+// Public routes - no authentication required for demo
 router.get('/', getAllSchemes);
-router.get('/eligible', protect, getEligibleSchemes);
-router.get('/category/:category', getSchemesByCategory);
+router.get('/eligible', getEligibleSchemes);
 router.get('/:id', getSchemeById);
 
 export default router;

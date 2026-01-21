@@ -1,5 +1,4 @@
-import { createContext, useState, useContext, useEffect } from 'react';
-import * as authService from '../services/authService';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
@@ -12,66 +11,55 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    // Mock user data for demo purposes (no authentication required)
+    const [user, setUser] = useState({
+        id: 'demo-user',
+        name: 'Demo User',
+        email: 'demo@schemedesk.in',
+        age: 30,
+        income: 180000,
+        state: 'Tamil Nadu',
+        district: 'Chennai',
+        gender: 'Male',
+        category: 'General'
+    });
 
-    useEffect(() => {
-        if (token) {
-            loadUser();
-        } else {
-            setLoading(false);
-        }
-    }, [token]);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    const loadUser = async () => {
-        try {
-            const response = await authService.getMe();
-            setUser(response.data);
-        } catch (error) {
-            console.error('Load user error:', error);
-            logout();
-        } finally {
-            setLoading(false);
-        }
+    // Mock login function (not used but kept for compatibility)
+    const login = async (email, password) => {
+        setIsAuthenticated(true);
+        return { success: true };
     };
 
-    const login = async (credentials) => {
-        const response = await authService.login(credentials);
-        const { token, user } = response.data;
-        localStorage.setItem('token', token);
-        setToken(token);
-        setUser(user);
-        return response;
-    };
-
+    // Mock register function (not used but kept for compatibility)
     const register = async (userData) => {
-        const response = await authService.register(userData);
-        const { token, user } = response.data;
-        localStorage.setItem('token', token);
-        setToken(token);
-        setUser(user);
-        return response;
+        setUser({ ...user, ...userData });
+        setIsAuthenticated(true);
+        return { success: true };
     };
 
+    // Mock logout function
     const logout = () => {
-        localStorage.removeItem('token');
-        setToken(null);
-        setUser(null);
+        // Do nothing - keep user logged in for demo
     };
 
-    const updateUser = (updatedUser) => {
-        setUser(updatedUser);
+    // Mock update profile function
+    const updateProfile = async (updates) => {
+        setUser({ ...user, ...updates });
+        return { success: true };
     };
 
     const value = {
         user,
+        isAuthenticated,
         loading,
-        isAuthenticated: !!user,
         login,
         register,
         logout,
-        updateUser
+        updateProfile,
+        setUser
     };
 
     return (
@@ -80,5 +68,3 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-
-export default AuthContext;

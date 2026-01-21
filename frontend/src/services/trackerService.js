@@ -1,51 +1,47 @@
 import axios from 'axios';
 import { API_URL } from '../utils/constants';
 
-const getAuthHeader = () => {
-    const token = localStorage.getItem('token');
-    return token ? { Authorization: `Bearer ${token}` } : {};
-};
+const api = axios.create({
+    baseURL: API_URL,
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
 
-export const createApplication = async (schemeId) => {
-    const response = await axios.post(`${API_URL}/applications`,
-        { scheme_id: schemeId },
-        { headers: getAuthHeader() }
-    );
-    return response.data;
-};
+// Request interceptor
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
-export const getUserApplications = async () => {
-    const response = await axios.get(`${API_URL}/applications`, {
-        headers: getAuthHeader()
-    });
-    return response.data;
-};
+// Response interceptor
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        console.error('API Error:', error.response?.data || error.message);
+        return Promise.reject(error);
+    }
+);
 
-export const getApplicationById = async (id) => {
-    const response = await axios.get(`${API_URL}/applications/${id}`, {
-        headers: getAuthHeader()
-    });
-    return response.data;
-};
+export const getUserApplications = () => api.get('/applications');
 
-export const getRiskScore = async (applicationId) => {
-    const response = await axios.get(`${API_URL}/applications/${applicationId}/risk`, {
-        headers: getAuthHeader()
-    });
-    return response.data;
-};
+export const getApplicationById = (id) => api.get(`/applications/${id}`);
 
-export const getApplicationStats = async () => {
-    const response = await axios.get(`${API_URL}/applications/stats`, {
-        headers: getAuthHeader()
-    });
-    return response.data;
-};
+export const createApplication = (schemeId) =>
+    api.post('/applications', { scheme_id: schemeId });
 
-export default {
-    createApplication,
-    getUserApplications,
-    getApplicationById,
-    getRiskScore,
-    getApplicationStats
-};
+export const updateApplicationStatus = (id, status) =>
+    api.patch(`/applications/${id}/status`, { status });
+
+export const getRiskScore = (applicationId) =>
+    api.get(`/applications/${applicationId}/risk`);
+
+export const getApplicationStats = () => api.get('/applications/stats');
+
+export default api;
